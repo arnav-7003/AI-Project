@@ -44,8 +44,11 @@ plt.ylabel("Average energy")
 plt.legend()
 plt.grid(alpha=0.25)
 plt.savefig(OUT / "avg_signal_rock_vs_mine.png")
+plt.close()
+print("saved outputs/avg_signal_rock_vs_mine.png")
 X=df.drop("label", axis=1)
 y = df["label"].map({"R": 0, "M": 1})   #Rock = 0, Mine = 1
+
 X_train, X_tests, y_train, y_test = train_test_split(
   X, y, test_size=0.20, random_state=42, stratify=y)
 print("\nTrain:", X_train.shape, "Test:", X_test.shape)
