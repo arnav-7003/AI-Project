@@ -33,9 +33,14 @@ plt.ylabel("Number of samples")
 plt.savefig(OUT / "class_distribution.png")
 plt.close()
 print("Saved outputs/class_distribution.png")
-
-
-
+#Average signal of rock vs Mine across the 60 frequency bands 
+feaature_cols = [f"f{i}" for i in range(60)]
+plt.figure(figsize=(8,4))
+plt.plot(df[df["label"] == "R"][feature_cols].mean().values, label="Rock", color="tab:blue")
+plt.plot(df[df["label"] == "M"][feature_cols].mean().values, label="Mine", color"tab:orange")
+plt.title("Average sonar signal: Rock vs Mine")
+plt.xlabel("Feature number (frequency band)")
+plt.y
 
 
 
