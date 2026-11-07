@@ -1,3 +1,95 @@
+#Importing Libraries
+from pathlib import Path
+import numpy as np
+import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (accuracy_score, precision_score, recall_score,
+                             f1_score, confusion_matrix, classification_report,
+                             ConfusionMatrixDisplay)
+
+BASE = Path(__file__).resolve().parent.parent
+OUT = BASE / "outputs"
+OUT.mkdir(exist_ok=True)
+
+df = pd.read_csv(BASE / "data" / "sonar.csv", header=None)
+df.columns = [f"f{i}" for i in range(60)] + ["label"]
+
+print("Shape:", df.shape)
+print("Missing values:", df.isnull().sum().sum())
+print(df.head())
+print(df["label"].value_counts())
+
+# Class distribution graph
+counts = df["label"].value_counts()
+plt.bar(["Rock", "Mine"], [counts["R"], counts["M"]], color=["tab:blue", "tab:orange"])
+plt.title("Class distribution")
+plt.xlabel("Class")
+plt.ylabel("Number of samples")
+plt.savefig(OUT / "class_distribution.png")
+plt.close()
+print("Saved outputs/class_distribution.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # confusion matrix
 ConfusionMatrixDisplay.from_predictions(y_test,y_pred_all,display_labels=["Rock","Mine"],cmap="Blues")
 plt.title("confusion matrix:all 60 features")
