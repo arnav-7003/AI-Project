@@ -40,9 +40,63 @@ plt.plot(df[df["label"] == "R"][feature_cols].mean().values, label="Rock", color
 plt.plot(df[df["label"] == "M"][feature_cols].mean().values, label="Mine", color"tab:orange")
 plt.title("Average sonar signal: Rock vs Mine")
 plt.xlabel("Feature number (frequency band)")
-plt.y
+plt.ylabel("Average energy")
+plt.legend()
+plt.grid(alpha=0.25)
+plt.savefig(OUT / "avg_signal_rock_vs_mine.png")
+X=df.drop("label", axis=1)
+y = df["label"].map({"R": 0, "M": 1})   #Rock = 0, Mine = 1
+X_train, X_tests, y_train, y_test = train_test_split(
+  X, y, test_size=0.20, random_state=42, stratify=y)
+print("\nTrain:", X_train.shape, "Test:", X_test.shape)
+
+#Normalization: standardScaler (fit only on training data)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+#correlation between features (training data only)
+corr = X_train.corr()
+plt.figure(figsize=(6,5))
+plt.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
+plt.colorbar(label="Correlation")
+plt.title("Feature correlaation (training data)")
+plt.xlabel("Feature number")
+plt.ylabel("Feature number")
+plt.savefig(OUT / "feature_correlation (training data)")
+plt.close()
+print("saved outputs/feature_correlation.png")
+
+#Correlation of each feature with the label 
+corr_with_label = X_train.apply(lambda col: col.corr(y_train))
+top20 = corr_with_label.abs().sort_values(asccending=False).head(20)
+print("\nTop 10 features most correlated with the label:")
+print(corr_with_label[top20.index[:10].round(3).to_string())
+
+#Feature selection: keep the 20 features most correlated with the label 
+selected_features = list(top20.index)
+idx = [list(X.columns).index(C) for c in selected_features]  #column positions
+X_train_sel = X_train_scaled[:, idx]
+X_test_sel = X_test_scaled[:, idx]
+print("selected", len(selected_features), "features")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
 
 
