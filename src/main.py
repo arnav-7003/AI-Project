@@ -34,10 +34,10 @@ plt.savefig(OUT / "class_distribution.png")
 plt.close()
 print("Saved outputs/class_distribution.png")
 #Average signal of rock vs Mine across the 60 frequency bands 
-feaature_cols = [f"f{i}" for i in range(60)]
+feature_cols = [f"f{i}" for i in range(60)]
 plt.figure(figsize=(8,4))
 plt.plot(df[df["label"] == "R"][feature_cols].mean().values, label="Rock", color="tab:blue")
-plt.plot(df[df["label"] == "M"][feature_cols].mean().values, label="Mine", color"tab:orange")
+plt.plot(df[df["label"] == "M"][feature_cols].mean().values, label="Mine", color="tab:orange")
 plt.title("Average sonar signal: Rock vs Mine")
 plt.xlabel("Feature number (frequency band)")
 plt.ylabel("Average energy")
@@ -45,11 +45,11 @@ plt.legend()
 plt.grid(alpha=0.25)
 plt.savefig(OUT / "avg_signal_rock_vs_mine.png")
 plt.close()
-print("saved outputs/avg_signal_rock_vs_mine.png")
+print("Saved outputs/avg_signal_rock_vs_mine.png")
 X=df.drop("label", axis=1)
 y = df["label"].map({"R": 0, "M": 1})   #Rock = 0, Mine = 1
 
-X_train, X_tests, y_train, y_test = train_test_split(
+X_train, X_test, y_train, y_test = train_test_split(
   X, y, test_size=0.20, random_state=42, stratify=y)
 print("\nTrain:", X_train.shape, "Test:", X_test.shape)
 
@@ -63,25 +63,25 @@ corr = X_train.corr()
 plt.figure(figsize=(6,5))
 plt.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
 plt.colorbar(label="Correlation")
-plt.title("Feature correlaation (training data)")
+plt.title("Feature correlation (training data)")
 plt.xlabel("Feature number")
 plt.ylabel("Feature number")
-plt.savefig(OUT / "feature_correlation (training data)")
+plt.savefig(OUT / "feature_correlation.png")
 plt.close()
 print("saved outputs/feature_correlation.png")
 
 #Correlation of each feature with the label 
 corr_with_label = X_train.apply(lambda col: col.corr(y_train))
-top20 = corr_with_label.abs().sort_values(asccending=False).head(20)
+top20 = corr_with_label.abs().sort_values(ascending=False).head(20)
 print("\nTop 10 features most correlated with the label:")
-print(corr_with_label[top20.index[:10].round(3).to_string())
+print(corr_with_label[top20.index[:10]].round(3).to_string())
 
 #Feature selection: keep the 20 features most correlated with the label 
 selected_features = list(top20.index)
-idx = [list(X.columns).index(C) for c in selected_features]  #column positions
+idx = [list(X.columns).index(c) for c in selected_features]  #column positions
 X_train_sel = X_train_scaled[:, idx]
 X_test_sel = X_test_scaled[:, idx]
-print("selected", len(selected_features), "features")
+print("Selected", len(selected_features), "features")
 
 
 # Training and testing Functions + Models
@@ -113,11 +113,11 @@ print("\nTrain accuracy (all 60 features):",
       round(accuracy_score(y_train, model_all.predict(X_train_scaled)), 3))
 res_all, y_pred_all = evaluate_model(model_all, X_test_scaled, y_test, "All 60 features")
 
-# 20 selected features
-model_all = train_model(X_train_scaled, y_train)
-print("\nTrain accuracy (all 60 features):",
-      round(accuracy_score(y_train, model_all.predict(X_train_scaled)), 3))
-res_all, y_pred_all = evaluate_model(model_all, X_test_scaled, y_test, "All 60 features")
+# Model B: 20 selected features
+model_sel = train_model(X_train_sel, y_train)
+print("\nTrain accuracy (20 selected features):",
+      round(accuracy_score(y_train, model_sel.predict(X_train_sel)), 3))
+res_sel, y_pred_sel = evaluate_model(model_sel, X_test_sel, y_test, "20 selected features")
 
 
 results_df = pd.DataFrame([res_all, res_sel])
@@ -135,11 +135,11 @@ print("saved outputs/confusion_matrix.png")
 sizes = np.linspace(0.1,1.0,10)
 train_scores,test_scores=[],[]
 for frac in sizes:
-    n=int(frac*len(x_train_scaled))
-    m=train_model(x_train_scaled[:n],y_train.iloc[:n])
+    n=int(frac*len(X_train_scaled))
+    m=train_model(X_train_scaled[:n],y_train.iloc[:n])
 
-train_scores.append(accuracy_score(y_train.iloc[:n],m.predict(x_train_scaled[:n])))
-test_scores.append(accuracy_score(y_test,m.predict(x_test_scaled)))
+    train_scores.append(accuracy_score(y_train.iloc[:n],m.predict(X_train_scaled[:n])))
+    test_scores.append(accuracy_score(y_test,m.predict(X_test_scaled)))
 
 plt.figure(figsize=(7,4))
 plt.plot(sizes * 100, train_scores, marker="o", label="Training accuracy")
@@ -159,10 +159,10 @@ plt.title("logistic regression:all features vs selected features")
 plt.ylabel("score")
 plt.ylim(0,1.05)
 plt.xticks(rotation=0)
-plt.grid(axis=y,alpha=0.25)
-plt.savefig( OUT / "metrics_comparision.png")
+plt.grid(axis="y",alpha=0.25)
+plt.savefig( OUT / "metrics_comparison.png")
 plt.close()
-print("saved outputs/metrics_comparision.png")
+print("saved outputs/metrics_comparison.png")
 
 # actual vs predicted class counts 
 actual=[(y_test==0).sum(),(y_test==1).sum()]
@@ -185,7 +185,7 @@ coef=model_all.coef_[0]
 top=np.argsort(np.abs(coef))[-10:]
 plt.figure(figsize=(7,5))
 plt.barh([f"feature{i}"for i in top],coef[top],color=['tab:orange' if coef[i]>0 else 'tab:blue' for i in top])
-plt.title("top 10 featues orange:mine , blue:rock")
+plt.title("top 10 features orange:mine , blue:rock")
 plt.xlabel("coefficient value")
 plt.tight_layout()
 plt.savefig( OUT / "top_features.png")
