@@ -10,13 +10,14 @@ Classifies sonar signals as **Rock (R)** or **Mine (M)** using Logistic Regressi
 
 
 ## Project structure
+```
 sonar-mines-vs-rocks/
 ├── data/sonar.csv
 ├── src/
 │   ├── main.py
 ├── requirements.txt
 └── README.md
-
+```
 ## Dataset
 
 UCI Connectionist Bench (Sonar, Mines vs. Rocks):
