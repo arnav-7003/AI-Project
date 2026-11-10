@@ -84,6 +84,46 @@ X_test_sel = X_test_scaled[:, idx]
 print("selected", len(selected_features), "features")
 
 
+# Training and testing Functions + Models
+
+def train_model(X_tr, y_tr):
+    """Train a Logistic Regression model."""
+    model = LogisticRegression(max_iter=1000)
+    model.fit(X_tr, y_tr)
+    return model
+
+
+def evaluate_model(model, X_te, y_te, name):
+    """Predict, print confusion matrix + classification report, return metrics."""
+    y_pred = model.predict(X_te)
+    print("\n", name)
+    print("Confusion matrix:\n", confusion_matrix(y_te, y_pred))
+    print(classification_report(y_te, y_pred, target_names=["Rock", "Mine"]))
+    metrics = {"Model": name,
+               "Accuracy": accuracy_score(y_te, y_pred),
+               "Precision": precision_score(y_te, y_pred),
+               "Recall": recall_score(y_te, y_pred),
+               "F1": f1_score(y_te, y_pred)}
+    return metrics, y_pred
+
+
+# all 60 features
+model_all = train_model(X_train_scaled, y_train)
+print("\nTrain accuracy (all 60 features):",
+      round(accuracy_score(y_train, model_all.predict(X_train_scaled)), 3))
+res_all, y_pred_all = evaluate_model(model_all, X_test_scaled, y_test, "All 60 features")
+
+# 20 selected features
+model_all = train_model(X_train_scaled, y_train)
+print("\nTrain accuracy (all 60 features):",
+      round(accuracy_score(y_train, model_all.predict(X_train_scaled)), 3))
+res_all, y_pred_all = evaluate_model(model_all, X_test_scaled, y_test, "All 60 features")
+
+
+results_df = pd.DataFrame([res_all, res_sel])
+print(results_df.round(3))
+results_df.round(3).to_csv(OUT / "results.csv", index=False)
+print("Saved outputs/results.csv")
 
 
 
