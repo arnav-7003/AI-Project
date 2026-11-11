@@ -15,7 +15,7 @@ Classifies sonar signals as **Rock (R)** or **Mine (M)** using Logistic Regressi
 
 ## Project structure
 ```
-sonar-mines-vs-rocks/
+AI-Project/
 ├── data/sonar.csv
 ├── src/
 │   ├── main.py
