@@ -47,11 +47,14 @@ The file `data/sonar.csv` is already included in this repo (original file `sonar
 
 ## Setup
 
-Tested on Python 3.10 / 3.11 (Windows / macOS / Ubuntu).
-Enter the below commands one by one
+Tested on Python 3.14 (Windows).
+Run following commands one by one.
+
 ```
 git clone https://github.com/arnav-7003/AI-Project.git
 cd AI-Project
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
