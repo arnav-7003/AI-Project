@@ -11,7 +11,7 @@ Classifies sonar signals as **Rock (R)** or **Mine (M)** using Logistic Regressi
 | Rishabh Mahar | 2026eeb1399 | PPT lead |
 | Dhiraj Kumar Yadav | 2026mcb1525 | Execution lead |
 | Arnav Yadav | 2026eeb1326 | Documentation lead |
-| ... | ... | Video lead |
+| Kashish Chhabra | 2026aib1048 | Video lead |
 
 ## Project structure
 ```
