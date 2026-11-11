@@ -26,6 +26,7 @@ The file `data/sonar.csv` is already included in this repo (original file `sonar
 
 ## Setup
 
+Enter the below commands one by one
 ```
 git clone https://github.com/arnav-7003/AI-Project.git
 cd AI-Project
