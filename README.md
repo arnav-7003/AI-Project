@@ -47,10 +47,13 @@ pip install -r requirements.txt
 
 ## Expected output
 
+![Terminal output part 1](media/result2.jpg)
+![Terminal output part 2](media/result3.jpg)
 
 
 ## Results
 
+![Result](media/result1.jpg)
 
 ## Links
 
