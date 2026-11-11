@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 Video - https://youtu.be/NlTKFqgT7nQ
 
-PPT - https://github.com/arnav-7003/AI-Project/blob/main/Project%20Presentation%20Team%2055.pptx
+PPT - https://github.com/arnav-7003/AI-Project/blob/main/Project%20Presentation%20Team%2055.pdf
 
 ## AI-use disclosure
 
