@@ -57,5 +57,7 @@ pip install -r requirements.txt
 
 ## Links
 
+Video - https://youtu.be/NlTKFqgT7nQ
+
 
 ## AI-use disclosure
