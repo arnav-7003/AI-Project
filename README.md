@@ -16,9 +16,26 @@ Classifies sonar signals as **Rock (R)** or **Mine (M)** using Logistic Regressi
 ## Project structure
 ```
 AI-Project/
-├── data/sonar.csv
+├── data/
+│   └── sonar.csv                  # 208 rows, 60 features + label (R/M)
 ├── src/
-│   ├── main.py
+│   └── main.py                    # single script: EDA, feature selection, model, plots
+├── outputs/                       # created when you run main.py
+│   ├── class_distribution.png
+│   ├── avg_signal_rock_vs_mine.png
+│   ├── feature_correlation.png
+│   ├── confusion_matrix.png
+│   ├── training_plot.png
+│   ├── metrics_comparison.png
+│   ├── actual_vs_predicted.png
+│   ├── top_features.png
+│   ├── results_table.png
+│   └── results.csv
+├── media/                         # screenshots used in README
+│   ├── result1.jpg                # results table
+│   ├── result2.jpg                # terminal output part 1
+│   └── result3.jpg                # terminal output part 2
+├── Project Presentation Team 55.pptx
 ├── requirements.txt
 └── README.md
 ```
