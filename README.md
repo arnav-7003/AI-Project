@@ -30,6 +30,7 @@ The file `data/sonar.csv` is already included in this repo (original file `sonar
 
 ## Setup
 
+Tested on Python 3.10 / 3.11 (Windows / macOS / Ubuntu).
 Enter the below commands one by one
 ```
 git clone https://github.com/arnav-7003/AI-Project.git
@@ -43,3 +44,15 @@ pip install -r requirements.txt
 2. The script prints metrics and saves 4 files in `outputs/`.
 3. Expected runtime: under 1 minute.
 
+
+## Expected output
+
+
+
+## Results
+
+
+## Links
+
+
+## AI-use disclosure
