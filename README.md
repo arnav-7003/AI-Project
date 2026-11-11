@@ -2,7 +2,7 @@
 
 Classifies sonar signals as **Rock (R)** or **Mine (M)** using Logistic Regression.
 
-`AI101 Mini-Project` · `Team XX`
+`AI101 Mini-Project` · `Team 55`
 
 ## Team and roles
 
