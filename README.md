@@ -27,10 +27,8 @@ The file `data/sonar.csv` is already included in this repo (original file `sonar
 ## Setup
 
 ```
-git clone https://github.com/arnav-7003/AI-Project
-cd sonar-mines-vs-rocks
-python -m venv venv
-source venv/bin/activate
+git clone https://github.com/arnav-7003/AI-Project.git
+cd AI-Project
 pip install -r requirements.txt
 ```
 
