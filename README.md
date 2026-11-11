@@ -6,12 +6,12 @@ Classifies sonar signals as **Rock (R)** or **Mine (M)** using Logistic Regressi
 
 ## Team and roles
 
-| Member | Entry no. | Role |
-|--------|-----------|------|
-| Rishabh Mahar | 2026EEB1399 | PPT lead |
-| Dhiraj Kumar Yadav | 2026MCB1525 | Execution lead |
-| Arnav Yadav | 2026EEB1326 | Documentation lead |
-| Kashish  | 2026AIB1048 | Video lead |
+| Member | Entry no. | Deliverable role | Contribution in `src/main.py` |
+|--------|-----------|------------------|-------------------------------|
+| Rishabh Mahar | 2026eeb1399 | PPT lead | Training and evaluation |
+| Dhiraj Kumar Yadav | 2026mcb1525 | Execution lead | Preprocessing and feature selection |
+| Arnav Yadav | 2026eeb1326 | Documentation lead | Data loading and exploration |
+| Kashish Chhabra | 2026aib1048 | Video lead | Plots and results table |
 
 ## Project structure
 ```
