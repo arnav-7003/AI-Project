@@ -58,6 +58,7 @@ pip install -r requirements.txt
 ## Links
 
 Video - https://youtu.be/NlTKFqgT7nQ
+
 PPT - https://github.com/arnav-7003/AI-Project/blob/main/Project%20Presentation%20Team%2055.pptx
 
 ## AI-use disclosure
