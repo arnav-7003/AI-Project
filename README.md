@@ -61,7 +61,7 @@ pip install -r requirements.txt
 ## How to run
 
 1. `python src/main.py`
-2. The script prints metrics and saves 4 files in `outputs/`.
+2. The script prints metrics and saves 10 files in `outputs/`.
 3. Expected runtime: under 1 minute.
 
 
