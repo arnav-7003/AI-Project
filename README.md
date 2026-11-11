@@ -63,3 +63,4 @@ PPT - https://github.com/arnav-7003/AI-Project/blob/main/Project%20Presentation%
 
 ## AI-use disclosure
 
+AI tools were used for limited assistance with code development, debugging, code review, basic Git commands, and language refinement for the PPT. All AI-generated suggestions were reviewed, modified, and verified by us. We take full responsibility for the final work, its accuracy, and implementation.
